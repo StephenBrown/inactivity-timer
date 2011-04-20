@@ -1,0 +1,351 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns:yui="http://yuilibrary.com/rdf/1.0/yui.rdf#">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<title>API: inactivity-timer   inactive-timer.js  (YUI Library)</title>
+
+	<link rel="stylesheet" type="text/css" href="assets/reset-fonts-grids-min.css" />
+	<link rel="stylesheet" type="text/css" href="assets/api.css" />
+
+    <script type="text/javascript" src="assets/api-js"></script>
+    <script type="text/javascript" src="assets/ac-js"></script>
+</head>
+
+<body id="yahoo-com">
+
+<div id="doc3" class="yui-t2">
+	<div id="hd">
+        <h1><a href="http://developer.yahoo.com/yui/" title="newprojectname">newprojectname</a></h1>
+        <h3>inactivity-timer&nbsp; <span class="subtitle">localtest</span></h3>
+        <a href="./index.html" title="newprojectname">newprojectname</a> 
+            &gt; <a href="./module_inactivity-timer.html" title="inactivity-timer">inactivity-timer</a>
+                
+                 &gt; inactive-timer.js (source view) 
+        <form onsubmit="return false">
+            <div id="propertysearch">
+                Search: <input autocomplete="off" id="searchinput" />
+                <div id="searchresults">
+                    &nbsp;
+                </div>
+            </div>
+        </form>
+	</div>
+
+	<div id="bd">
+		<div id="yui-main">
+			<div class="yui-b">
+            <form action="#" name="yui-classopts-form" method="get" id="yui-classopts-form">
+                <fieldset>
+                    <legend>Filters</legend>
+                <span class="classopts"><input type="checkbox" name="show_private" id="show_private" /> <label for="show_private">Show Private</label></span>
+                <span class="classopts"><input type="checkbox" name="show_protected" id="show_protected" /> <label for="show_protected">Show Protected</label></span>
+                <span class="classopts"><input type="checkbox" name="show_deprecated" id="show_deprecated" /> <label for="show_deprecated">Show Deprecated</label></span>
+                </fieldset>
+            </form>
+
+                    <div id="srcout">
+                        <style>
+                            #doc3 .classopts { display:none; }
+                        </style>
+                        <div class="highlight"><pre><span class="nx">Element</span><span class="p">.</span><span class="nx">Events</span><span class="p">.</span><span class="nx">DOMMouseScroll</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="nx">onRemove</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;removed event&#39;</span><span class="p">)}</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @module inactivity-timer</span>
+<span class="cm"> */</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Timer to determine if the user is active or inactive.</span>
+<span class="cm"> * @class InactivityTimer</span>
+<span class="cm"> * @constructor</span>
+<span class="cm"> * @param {Object} config optional The configuration object containing the initial configuration values for the InactivityTimer.</span>
+<span class="cm"> */</span>
+<span class="kd">var</span> <span class="nx">InactivityTimer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Class</span><span class="p">({</span>
+	
+	<span class="nx">Implements</span><span class="o">:</span> <span class="p">[</span><span class="nx">Options</span><span class="p">,</span> <span class="nx">Events</span><span class="p">],</span>
+	
+	<span class="cm">/**</span>
+<span class="cm">	 * The object that holds the default configuration.</span>
+<span class="cm">	 *</span>
+<span class="cm">	 * @property options</span>
+<span class="cm">	 * @type Object</span>
+<span class="cm">	 * @public</span>
+<span class="cm">	 */</span>
+	<span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+		<span class="cm">/**</span>
+<span class="cm">		 * Fired when user is active.</span>
+<span class="cm">		 *</span>
+<span class="cm">		 * @event onActive</span>
+<span class="cm">		 */</span>
+		<span class="c1">//onActive: function(){},</span>
+
+		<span class="cm">/**</span>
+<span class="cm">		 * Fired when user becomes inactive.</span>
+<span class="cm">		 *</span>
+<span class="cm">		 * @event onInactive</span>
+<span class="cm">		 */</span>
+		<span class="c1">//onInactive: function(){},</span>
+
+		<span class="cm">/**</span>
+<span class="cm">		 * The element to attach event listeners to listen for user activity.</span>
+<span class="cm">		 *</span>
+<span class="cm">		 * @config element</span>
+<span class="cm">		 * @type Element</span>
+<span class="cm">		 * @default document</span>
+<span class="cm">		 */</span>
+		<span class="nx">element</span><span class="o">:</span> <span class="nb">document</span><span class="p">,</span>
+
+		<span class="cm">/**</span>
+<span class="cm">		 * Milliseconds of user inactivity until user becomes inactive.</span>
+<span class="cm">		 *</span>
+<span class="cm">		 * @config timeout</span>
+<span class="cm">		 * @type Number</span>
+<span class="cm">		 * @default 30000</span>
+<span class="cm">		 */</span>
+		<span class="nx">timeout</span><span class="o">:</span> <span class="mi">30000</span><span class="p">,</span>
+
+		<span class="cm">/**</span>
+<span class="cm">		 * Milliseconds of time when the timer is not listening for user activity after the user was active.</span>
+<span class="cm">		 *</span>
+<span class="cm">		 * @config eventTimeoutLength</span>
+<span class="cm">		 * @type Number</span>
+<span class="cm">		 * @default 1000</span>
+<span class="cm">		 */</span>
+		<span class="nx">eventTimeoutLength</span><span class="o">:</span> <span class="mi">1000</span><span class="p">,</span>
+
+		<span class="cm">/**</span>
+<span class="cm">		 * Events to listen to. These events will be attached to the element.</span>
+<span class="cm">		 *</span>
+<span class="cm">		 * @config events</span>
+<span class="cm">		 * @type Array</span>
+<span class="cm">		 * @default [&#39;mousemove&#39;, &#39;keydown&#39;, &#39;mousewheel&#39;, &#39;mousedown&#39;]</span>
+<span class="cm">		 */</span>
+		<span class="nx">events</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;mousemove&#39;</span><span class="p">,</span> <span class="s1">&#39;keydown&#39;</span><span class="p">,</span> <span class="s1">&#39;mousewheel&#39;</span><span class="p">,</span> <span class="s1">&#39;mousedown&#39;</span><span class="p">]</span>
+
+		<span class="c1">//DOMMouseScroll is causing a bug in addEventBindings in FireFox.</span>
+		<span class="c1">//events: [&#39;mousemove&#39;, &#39;keydown&#39;, &#39;DOMMouseScroll&#39;, &#39;mousewheel&#39;, &#39;mousedown&#39;]</span>
+	<span class="p">},</span>
+
+	<span class="cm">/** </span>
+<span class="cm">	 * Method run when class in initialized. Sets config options and adds state change observers.</span>
+<span class="cm">	 *</span>
+<span class="cm">	 * @method initialize</span>
+<span class="cm">	 * @param {Object} options optional The configuation options.</span>
+<span class="cm">	 * @private</span>
+<span class="cm">	 * @return {this}</span>
+<span class="cm">	 */</span>
+	<span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">setOptions</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">element</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">element</span><span class="p">;</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">addStateObservers</span><span class="p">();</span>
+	<span class="p">},</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * State of the user.</span>
+<span class="cm">	 *</span>
+<span class="cm">	 * @property state</span>
+<span class="cm">	 * @private</span>
+<span class="cm">	 */</span>
+	<span class="nx">state</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * Reference to timeout. Used to clear the timeout.</span>
+<span class="cm">	 *</span>
+<span class="cm">	 * @property timeout</span>
+<span class="cm">	 * @private</span>
+<span class="cm">	 */</span>
+	<span class="nx">timeout</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * Time of last state change.</span>
+<span class="cm">	 *</span>
+<span class="cm">	 * @property stateChangeTime</span>
+<span class="cm">	 * @private</span>
+<span class="cm">	 */</span>
+	<span class="nx">stateChangeTime</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * Resets the timeout.</span>
+<span class="cm">	 *</span>
+<span class="cm">	 * @method resetTimeout</span>
+<span class="cm">	 * @return {void}</span>
+<span class="cm">	 * @private</span>
+<span class="cm">	 */</span>
+	<span class="nx">resetTimeout</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">timeout</span><span class="p">)</span> <span class="p">{</span>
+			<span class="nx">clearTimeout</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">timeout</span><span class="p">);</span>
+		<span class="p">}</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">timeout</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">inactiveUser</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">timeout</span><span class="p">);</span>
+	<span class="p">},</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * Changes state to inactive and fires the &#39;onInactive&#39; event.</span>
+<span class="cm">	 *</span>
+<span class="cm">	 * @method inactiveUser</span>
+<span class="cm">	 * @private</span>
+<span class="cm">	 */</span>
+	<span class="nx">inactiveUser</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;inactive&#39;</span><span class="p">);</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="s1">&#39;inactive&#39;</span><span class="p">;</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">fireEvent</span><span class="p">(</span><span class="s1">&#39;onInactive&#39;</span><span class="p">);</span>
+	  <span class="p">},</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * Adds the observers to track state changes.</span>
+<span class="cm">	 *</span>
+<span class="cm">	 * @method addStateObservers</span>
+<span class="cm">	 * @private</span>
+<span class="cm">	 */</span>
+	<span class="nx">addStateObservers</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">addEvent</span><span class="p">(</span><span class="s1">&#39;onActive&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+				<span class="k">this</span><span class="p">.</span><span class="nx">stateChangeTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+		<span class="p">});</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">addEvent</span><span class="p">(</span><span class="s1">&#39;onInactive&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+				<span class="k">this</span><span class="p">.</span><span class="nx">stateChangeTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+		<span class="p">});</span>
+	  <span class="p">},</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * Removes event binding from element then adds is back after config eventTimeoutLength.</span>
+<span class="cm">	 *</span>
+<span class="cm">	 * @method addEventBindings</span>
+<span class="cm">	 * @return {void}</span>
+<span class="cm">	 * @private</span>
+<span class="cm">	 */</span>
+	<span class="nx">addEventBindings</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">//key for storage in element</span>
+		<span class="kd">var</span> <span class="nx">eventTypeKey</span> <span class="o">=</span> <span class="s1">&#39;inactivity-timer-&#39;</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">type</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">eventTypeKey</span><span class="p">);</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">removeEvent</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">type</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">retrieve</span><span class="p">(</span><span class="nx">eventTypeKey</span><span class="p">));</span>
+
+		<span class="c1">//empties store. Debugging</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">store</span><span class="p">(</span><span class="nx">eventTypeKey</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+
+		<span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			<span class="kd">var</span> <span class="nx">bindingFunction</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">addEventBindings</span><span class="p">.</span><span class="nx">bindWithEvent</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+			<span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">store</span><span class="p">(</span><span class="nx">eventTypeKey</span><span class="p">,</span> <span class="nx">bindingFunction</span><span class="p">);</span>
+			<span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">addEvent</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">type</span><span class="p">,</span> <span class="nx">bindingFunction</span><span class="p">);</span>
+		<span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">eventTimeoutLength</span><span class="p">);</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">reset</span><span class="p">();</span>
+	<span class="p">},</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * Returns the current state of the user</span>
+<span class="cm">	 *</span>
+<span class="cm">	 * @method getState</span>
+<span class="cm">	 * @return {String} &#39;active&#39; for and active user and &#39;inactive&#39; for an inactive user.</span>
+<span class="cm">	 * @public</span>
+<span class="cm">	 */</span>
+	<span class="nx">getState</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
+	<span class="p">},</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * Starts the timer. Adds listening events to element and initiates timeouts. User goes to &#39;active&#39;.</span>
+<span class="cm">	 *</span>
+<span class="cm">	 * @method start</span>
+<span class="cm">	 * @return {this}</span>
+<span class="cm">	 * @public</span>
+<span class="cm">	 */</span>
+	<span class="nx">start</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">events</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">eventType</span><span class="p">)</span> <span class="p">{</span>
+			<span class="kd">var</span> <span class="nx">eventTypeKey</span> <span class="o">=</span> <span class="s1">&#39;inactivity-timer-&#39;</span> <span class="o">+</span> <span class="nx">eventType</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+			<span class="kd">var</span> <span class="nx">bindingFunction</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">addEventBindings</span><span class="p">.</span><span class="nx">bindWithEvent</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+			<span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">store</span><span class="p">(</span><span class="nx">eventTypeKey</span><span class="p">,</span> <span class="nx">bindingFunction</span><span class="p">);</span>
+			<span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">addEvent</span><span class="p">(</span><span class="nx">eventType</span><span class="p">,</span> <span class="nx">bindingFunction</span><span class="p">);</span>
+		<span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">reset</span><span class="p">();</span>
+		<span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+	<span class="p">},</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * Stops the timer. Removes listening events on element and clears timeouts.</span>
+<span class="cm">	 *</span>
+<span class="cm">	 * @method stop</span>
+<span class="cm">	 * @return {this}</span>
+<span class="cm">	 * @public</span>
+<span class="cm">	 */</span>
+	<span class="nx">stop</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="c1">//TODO: remove event function reference from element store</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">events</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">eventType</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">removeEvent</span><span class="p">(</span><span class="nx">eventType</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">retrieve</span><span class="p">(</span><span class="nx">eventType</span><span class="p">));</span>
+		<span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+		<span class="nx">clearTimeout</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">timeout</span><span class="p">);</span>
+		<span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+	<span class="p">},</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * Resets timer. Resets timeouts and fires &#39;onActive&#39; event.</span>
+<span class="cm">	 *</span>
+<span class="cm">	 * @return {void}</span>
+<span class="cm">	 * @method reset</span>
+<span class="cm">	 * @public</span>
+<span class="cm">	 */</span>
+	<span class="nx">reset</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">resetTimeout</span><span class="p">();</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">);</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="s1">&#39;active&#39;</span><span class="p">;</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">fireEvent</span><span class="p">(</span><span class="s1">&#39;onActive&#39;</span><span class="p">);</span>
+	<span class="p">},</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * Returns passed time since user status updated. For &#39;active&#39; state it is since the last user interaction. For &#39;inactive&#39; state it is since the status changed to &#39;inactive&#39;.</span>
+<span class="cm">	 *</span>
+<span class="cm">	 * @method timeSinceStatusChange</span>
+<span class="cm">	 * @return {Number} Time in ms since user status updated</span>
+<span class="cm">	 * @public</span>
+<span class="cm">	 */</span>
+	<span class="nx">timeSinceStatusChange</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="kd">var</span> <span class="nx">now</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+		<span class="k">return</span> <span class="nx">now</span> <span class="o">-</span> <span class="k">this</span><span class="p">.</span><span class="nx">stateChangeTime</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+                    </div>
+			</div>
+		</div>
+		<div class="yui-b">
+            <div class="nav">
+
+                    <div id="moduleList" class="module">
+                        <h4>Modules</h4>
+                        <ul class="content">
+                                <li class="selected"><a href="module_inactivity-timer.html" title="inactivity-timer">inactivity-timer</a></li>
+                        </ul>
+                    </div>
+
+                    <div id="classList" class="module">
+                        <h4>Classes</h4>
+                        <ul class="content">
+                                <li class=""><a href="InactivityTimer.html" title="InactivityTimer">InactivityTimer</a></li>
+                        </ul>
+                    </div>
+
+                    <div id="fileList" class="module">
+                        <h4>Files</h4>
+                        <ul class="content">        
+                                <li class="selected"><a href="inactive-timer.js.html" title="inactive-timer.js">inactive-timer.js</a></li>
+                        </ul>
+                    </div>
+
+
+
+
+
+            </div>
+		</div>
+	</div>
+	<div id="ft">
+        <hr />
+        Copyright &copy; 2011 Yahoo! Inc. All rights reserved.
+	</div>
+</div>
+<script type="text/javascript">
+
+    var ALL_YUI_PROPS = [{"url": "InactivityTimer.html#method_addEventBindings", "access": "private", "host": "InactivityTimer", "type": "method", "name": "addEventBindings"}, {"url": "InactivityTimer.html#method_addStateObservers", "access": "private", "host": "InactivityTimer", "type": "method", "name": "addStateObservers"}, {"url": "InactivityTimer.html#config_element", "access": "", "host": "InactivityTimer", "type": "config", "name": "element"}, {"url": "InactivityTimer.html#config_events", "access": "", "host": "InactivityTimer", "type": "config", "name": "events"}, {"url": "InactivityTimer.html#config_eventTimeoutLength", "access": "", "host": "InactivityTimer", "type": "config", "name": "eventTimeoutLength"}, {"url": "InactivityTimer.html#method_getState", "access": "", "host": "InactivityTimer", "type": "method", "name": "getState"}, {"url": "InactivityTimer.html#method_inactiveUser", "access": "private", "host": "InactivityTimer", "type": "method", "name": "inactiveUser"}, {"url": "InactivityTimer.html#method_initialize", "access": "private", "host": "InactivityTimer", "type": "method", "name": "initialize"}, {"url": "InactivityTimer.html#event_onActive", "access": "", "host": "InactivityTimer", "type": "event", "name": "onActive"}, {"url": "InactivityTimer.html#event_onInactive", "access": "", "host": "InactivityTimer", "type": "event", "name": "onInactive"}, {"url": "InactivityTimer.html#property_options", "access": "", "host": "InactivityTimer", "type": "property", "name": "options"}, {"url": "InactivityTimer.html#method_reset", "access": "", "host": "InactivityTimer", "type": "method", "name": "reset"}, {"url": "InactivityTimer.html#method_resetTimeout", "access": "private", "host": "InactivityTimer", "type": "method", "name": "resetTimeout"}, {"url": "InactivityTimer.html#method_start", "access": "", "host": "InactivityTimer", "type": "method", "name": "start"}, {"url": "InactivityTimer.html#property_state", "access": "private", "host": "InactivityTimer", "type": "property", "name": "state"}, {"url": "InactivityTimer.html#property_stateChangeTime", "access": "private", "host": "InactivityTimer", "type": "property", "name": "stateChangeTime"}, {"url": "InactivityTimer.html#method_stop", "access": "", "host": "InactivityTimer", "type": "method", "name": "stop"}, {"url": "InactivityTimer.html#property_timeout", "access": "private", "host": "InactivityTimer", "type": "property", "name": "timeout"}, {"url": "InactivityTimer.html#config_timeout", "access": "", "host": "InactivityTimer", "type": "config", "name": "timeout"}, {"url": "InactivityTimer.html#method_timeSinceStatusChange", "access": "", "host": "InactivityTimer", "type": "method", "name": "timeSinceStatusChange"}];
+</script>
+</body>
+</html>

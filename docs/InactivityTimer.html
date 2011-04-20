@@ -1,0 +1,730 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns:yui="http://yuilibrary.com/rdf/1.0/yui.rdf#">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<title>API: inactivity-timer  InactivityTimer   (YUI Library)</title>
+
+	<link rel="stylesheet" type="text/css" href="assets/reset-fonts-grids-min.css" />
+	<link rel="stylesheet" type="text/css" href="assets/api.css" />
+
+    <script type="text/javascript" src="assets/api-js"></script>
+    <script type="text/javascript" src="assets/ac-js"></script>
+</head>
+
+<body id="yahoo-com">
+
+<div id="doc3" class="yui-t2">
+	<div id="hd">
+        <h1><a href="http://developer.yahoo.com/yui/" title="newprojectname">newprojectname</a></h1>
+        <h3>inactivity-timer&nbsp; <span class="subtitle">localtest</span></h3>
+        <a href="./index.html" title="newprojectname">newprojectname</a> 
+            &gt; <a href="./module_inactivity-timer.html" title="inactivity-timer">inactivity-timer</a>
+                 &gt; InactivityTimer 
+                
+        <form onsubmit="return false">
+            <div id="propertysearch">
+                Search: <input autocomplete="off" id="searchinput" />
+                <div id="searchresults">
+                    &nbsp;
+                </div>
+            </div>
+        </form>
+	</div>
+
+	<div id="bd">
+		<div id="yui-main">
+			<div class="yui-b">
+            <form action="#" name="yui-classopts-form" method="get" id="yui-classopts-form">
+                <fieldset>
+                    <legend>Filters</legend>
+                <span class="classopts"><input type="checkbox" name="show_private" id="show_private" /> <label for="show_private">Show Private</label></span>
+                <span class="classopts"><input type="checkbox" name="show_protected" id="show_protected" /> <label for="show_protected">Show Protected</label></span>
+                <span class="classopts"><input type="checkbox" name="show_deprecated" id="show_deprecated" /> <label for="show_deprecated">Show Deprecated</label></span>
+                </fieldset>
+            </form>
+
+                    <h2>
+                        
+
+                        
+                        
+                            Class <b property="yui:name">InactivityTimer</b>
+                        <span class="extends">
+                        </span>
+
+                    </h2>
+                    <!-- class tree goes here -->
+                    
+                
+  
+
+                    <div class="summary description" property="yui:description">
+                        Timer to determine if the user is active or inactive.
+                    </div>
+
+                        <div class="section constructor details" rel="yui:constructor" resource="#constructor">
+                        <h3 id="constructor">Constructor</h3>
+                        <div class="content">
+                            <div class="detail">
+                                <strong property="yui:name">InactivityTimer</strong>
+                                <code>
+                                    (
+  
+                                        
+                                                
+                                                config
+                                    )
+                                </code>
+                                <div class="description">
+                                        <dl rel="yui:parameters">
+                                            <dt>Parameters:</dt>
+                                                <dd rel="yui:parameter">
+                                                    <code><span property="yui:name">config</span>
+                                                    &lt;<span property="yui:type">Object</span>&gt;
+                                                    </code>
+                                                    <span property="yui:description"> optional The configuration object containing the initial configuration values for the InactivityTimer.</span>
+                                                </dd>
+                                        </dl>
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div rel="yui:properties" resource="#properties">
+                        <div class="section field details">
+                            <h3 id="properties">Properties</h3>
+                            <div class="content">
+                                    <div class="" rel="yui:property" resource="#property_options">
+                                    <h4><a name="property_options" property="yui:name">options</a>
+                                        - <code><span property="yui:type">Object</span></code>
+                                    </h4>
+                                    <div class="detail">
+                                        <div class="description" property="yui:description">
+                                            The object that holds the default configuration.
+                                        </div>
+                                    </div>
+     
+                                        
+
+
+                                    <hr />
+                                    </div>
+                                    <div class="private" rel="yui:property" resource="#property_state">
+                                    <h4><a name="property_state" property="yui:name">state</a>
+                                        - <code>private <span property="yui:type">object</span></code>
+                                    </h4>
+                                    <div class="detail">
+                                        <div class="description" property="yui:description">
+                                            State of the user.
+                                        </div>
+                                    </div>
+     
+                                        
+
+
+                                    <hr />
+                                    </div>
+                                    <div class="private" rel="yui:property" resource="#property_stateChangeTime">
+                                    <h4><a name="property_stateChangeTime" property="yui:name">stateChangeTime</a>
+                                        - <code>private <span property="yui:type">object</span></code>
+                                    </h4>
+                                    <div class="detail">
+                                        <div class="description" property="yui:description">
+                                            Time of last state change.
+                                        </div>
+                                    </div>
+     
+                                        
+
+
+                                    <hr />
+                                    </div>
+                                    <div class="private" rel="yui:property" resource="#property_timeout">
+                                    <h4><a name="property_timeout" property="yui:name">timeout</a>
+                                        - <code>private <span property="yui:type">object</span></code>
+                                    </h4>
+                                    <div class="detail">
+                                        <div class="description" property="yui:description">
+                                            Reference to timeout. Used to clear the timeout.
+                                        </div>
+                                    </div>
+     
+                                        
+
+
+                                    <hr />
+                                    </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div rel="yui:methods" resource="#methods">
+                        <div class="section method details">
+                            <h3 id="methods">Methods</h3>
+                            <div class="content">
+                                    <div class="private" rel="yui:method" resource="#method_addEventBindings">
+                                    <h4>
+                                        <a name="method_addEventBindings">addEventBindings</a></h4>
+                                    <div class="detail" >
+                                        <code>
+                                         private 
+                                        
+                                        
+                                        void
+                                            <strong property="yui:name">addEventBindings</strong>
+                                           (
+                                            )
+                                        </code>
+                                        
+                                        <div class="description" property="yui:description">
+                                            Removes event binding from element then adds is back after config eventTimeoutLength.
+                                        </div>
+
+                                        <div class="description">
+
+
+
+
+             
+
+                                        </div>
+
+                                    </div>
+                                    <hr />
+                                    </div>
+                                    <div class="private" rel="yui:method" resource="#method_addStateObservers">
+                                    <h4>
+                                        <a name="method_addStateObservers">addStateObservers</a></h4>
+                                    <div class="detail" >
+                                        <code>
+                                         private 
+                                        
+                                        
+                                        void
+                                            <strong property="yui:name">addStateObservers</strong>
+                                           (
+                                            )
+                                        </code>
+                                        
+                                        <div class="description" property="yui:description">
+                                            Adds the observers to track state changes.
+                                        </div>
+
+                                        <div class="description">
+
+
+
+
+             
+
+                                        </div>
+
+                                    </div>
+                                    <hr />
+                                    </div>
+                                    <div class="" rel="yui:method" resource="#method_getState">
+                                    <h4>
+                                        <a name="method_getState">getState</a></h4>
+                                    <div class="detail" >
+                                        <code>
+                                        
+                                        
+                                        
+                                        String
+                                            <strong property="yui:name">getState</strong>
+                                           (
+                                            )
+                                        </code>
+                                        
+                                        <div class="description" property="yui:description">
+                                            Returns the current state of the user
+                                        </div>
+
+                                        <div class="description">
+
+
+                                                <dl>
+                                                    <dt>Returns:
+                                                    <code property="yui:return">
+                                                            String
+                                                    </code></dt>
+                                                    <dd property="yui:returnInfo">'active' for and active user and 'inactive' for an inactive user.</dd>
+                                                </dl>
+
+
+             
+
+                                        </div>
+
+                                    </div>
+                                    <hr />
+                                    </div>
+                                    <div class="private" rel="yui:method" resource="#method_inactiveUser">
+                                    <h4>
+                                        <a name="method_inactiveUser">inactiveUser</a></h4>
+                                    <div class="detail" >
+                                        <code>
+                                         private 
+                                        
+                                        
+                                        void
+                                            <strong property="yui:name">inactiveUser</strong>
+                                           (
+                                            )
+                                        </code>
+                                        
+                                        <div class="description" property="yui:description">
+                                            Changes state to inactive and fires the 'onInactive' event.
+                                        </div>
+
+                                        <div class="description">
+
+
+
+
+             
+
+                                        </div>
+
+                                    </div>
+                                    <hr />
+                                    </div>
+                                    <div class="private" rel="yui:method" resource="#method_initialize">
+                                    <h4>
+                                        <a name="method_initialize">initialize</a></h4>
+                                    <div class="detail" >
+                                        <code>
+                                         private 
+                                        
+                                        
+                                        this
+                                            <strong property="yui:name">initialize</strong>
+                                           (
+                                                
+                                                        
+                                                         options
+                                                    
+                                                
+                                            )
+                                        </code>
+                                        
+                                        <div class="description" property="yui:description">
+                                            Method run when class in initialized. Sets config options and adds state change observers.
+                                        </div>
+
+                                        <div class="description">
+
+                                                <dl rel="yui:parameters">
+                                                    <dt>Parameters:</dt>
+                                                        <dd rel="yui:parameter">
+                                                        <code><span property="yui:name">options</span>
+                                                        &lt;<span property="yui:type">Object</span>&gt;
+                                                        </code>
+                                                        <span property="yui:description"> optional The configuation options.</span>
+                                                        </dd>
+                                                </dl>
+
+
+
+             
+
+                                        </div>
+
+                                    </div>
+                                    <hr />
+                                    </div>
+                                    <div class="" rel="yui:method" resource="#method_reset">
+                                    <h4>
+                                        <a name="method_reset">reset</a></h4>
+                                    <div class="detail" >
+                                        <code>
+                                        
+                                        
+                                        
+                                        void
+                                            <strong property="yui:name">reset</strong>
+                                           (
+                                            )
+                                        </code>
+                                        
+                                        <div class="description" property="yui:description">
+                                            Resets timer. Resets timeouts and fires 'onActive' event.
+                                        </div>
+
+                                        <div class="description">
+
+
+
+
+             
+
+                                        </div>
+
+                                    </div>
+                                    <hr />
+                                    </div>
+                                    <div class="private" rel="yui:method" resource="#method_resetTimeout">
+                                    <h4>
+                                        <a name="method_resetTimeout">resetTimeout</a></h4>
+                                    <div class="detail" >
+                                        <code>
+                                         private 
+                                        
+                                        
+                                        void
+                                            <strong property="yui:name">resetTimeout</strong>
+                                           (
+                                            )
+                                        </code>
+                                        
+                                        <div class="description" property="yui:description">
+                                            Resets the timeout.
+                                        </div>
+
+                                        <div class="description">
+
+
+
+
+             
+
+                                        </div>
+
+                                    </div>
+                                    <hr />
+                                    </div>
+                                    <div class="" rel="yui:method" resource="#method_start">
+                                    <h4>
+                                        <a name="method_start">start</a></h4>
+                                    <div class="detail" >
+                                        <code>
+                                        
+                                        
+                                        
+                                        this
+                                            <strong property="yui:name">start</strong>
+                                           (
+                                            )
+                                        </code>
+                                        
+                                        <div class="description" property="yui:description">
+                                            Starts the timer. Adds listening events to element and initiates timeouts. User goes to 'active'.
+                                        </div>
+
+                                        <div class="description">
+
+
+
+
+             
+
+                                        </div>
+
+                                    </div>
+                                    <hr />
+                                    </div>
+                                    <div class="" rel="yui:method" resource="#method_stop">
+                                    <h4>
+                                        <a name="method_stop">stop</a></h4>
+                                    <div class="detail" >
+                                        <code>
+                                        
+                                        
+                                        
+                                        this
+                                            <strong property="yui:name">stop</strong>
+                                           (
+                                            )
+                                        </code>
+                                        
+                                        <div class="description" property="yui:description">
+                                            Stops the timer. Removes listening events on element and clears timeouts.
+                                        </div>
+
+                                        <div class="description">
+
+
+
+
+             
+
+                                        </div>
+
+                                    </div>
+                                    <hr />
+                                    </div>
+                                    <div class="" rel="yui:method" resource="#method_timeSinceStatusChange">
+                                    <h4>
+                                        <a name="method_timeSinceStatusChange">timeSinceStatusChange</a></h4>
+                                    <div class="detail" >
+                                        <code>
+                                        
+                                        
+                                        
+                                        Number
+                                            <strong property="yui:name">timeSinceStatusChange</strong>
+                                           (
+                                            )
+                                        </code>
+                                        
+                                        <div class="description" property="yui:description">
+                                            Returns passed time since user status updated. For 'active' state it is since the last user interaction. For 'inactive' state it is since the status changed to 'inactive'.
+                                        </div>
+
+                                        <div class="description">
+
+
+                                                <dl>
+                                                    <dt>Returns:
+                                                    <code property="yui:return">
+                                                            Number
+                                                    </code></dt>
+                                                    <dd property="yui:returnInfo">Time in ms since user status updated</dd>
+                                                </dl>
+
+
+             
+
+                                        </div>
+
+                                    </div>
+                                    <hr />
+                                    </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div rel="yui:events" resource="#events">
+                        <div class="section method details">
+                            <h3 id="events">Events</h3>
+                            <div class="content">
+                                    <div class="" rel="yui:event" resource="#event_onActive">
+                                    <h4>
+                                        <a name="event_onActive">onActive</a></h4>
+                                    <div class="detail">
+                                        <code>
+                                        
+                                        
+                                        
+                                            <strong property="yui:name">onActive</strong>
+
+                                            (
+                                            )
+
+                                        </code>
+                                        
+                                        <div class="description" property="yui:description">
+                                            Fired when user is active.
+                                        </div>
+
+                                        <div class="description">
+
+
+
+
+                                        </div>
+
+                                    </div>
+                                    <hr />
+                                    </div>
+                                    <div class="" rel="yui:event" resource="#event_onInactive">
+                                    <h4>
+                                        <a name="event_onInactive">onInactive</a></h4>
+                                    <div class="detail">
+                                        <code>
+                                        
+                                        
+                                        
+                                            <strong property="yui:name">onInactive</strong>
+
+                                            (
+                                            )
+
+                                        </code>
+                                        
+                                        <div class="description" property="yui:description">
+                                            Fired when user becomes inactive.
+                                        </div>
+
+                                        <div class="description">
+
+
+
+
+                                        </div>
+
+                                    </div>
+                                    <hr />
+                                    </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div rel="yui:attributes" resource="#configattributes">
+                        <div class="section field details">
+                            <h3 id="configattributes">Configuration Attributes</h3>
+                            <div class="content">
+                                    <div class="" rel="yui:attribute" resource="#config_element">
+                                    <h4><a name="config_element">element</a>
+                                        <code>- <span property="yui:type">Element</span></code>
+                                    </h4>
+                                    <div class="detail">
+                                        <div class="description" property="yui:description">
+                                            The element to attach event listeners to listen for user activity.
+                                        </div>
+                                    </div>
+ 
+     
+                                    <div class="default">
+                                        Default Value: document
+                                    </div>        
+
+                                    <hr />
+                                    </div>        
+                                    <div class="" rel="yui:attribute" resource="#config_events">
+                                    <h4><a name="config_events">events</a>
+                                        <code>- <span property="yui:type">Array</span></code>
+                                    </h4>
+                                    <div class="detail">
+                                        <div class="description" property="yui:description">
+                                            Events to listen to. These events will be attached to the element.
+                                        </div>
+                                    </div>
+ 
+     
+                                    <div class="default">
+                                        Default Value: ['mousemove', 'keydown', 'mousewheel', 'mousedown']
+                                    </div>        
+
+                                    <hr />
+                                    </div>        
+                                    <div class="" rel="yui:attribute" resource="#config_eventTimeoutLength">
+                                    <h4><a name="config_eventTimeoutLength">eventTimeoutLength</a>
+                                        <code>- <span property="yui:type">Number</span></code>
+                                    </h4>
+                                    <div class="detail">
+                                        <div class="description" property="yui:description">
+                                            Milliseconds of time when the timer is not listening for user activity after the user was active.
+                                        </div>
+                                    </div>
+ 
+     
+                                    <div class="default">
+                                        Default Value: 1000
+                                    </div>        
+
+                                    <hr />
+                                    </div>        
+                                    <div class="" rel="yui:attribute" resource="#config_timeout">
+                                    <h4><a name="config_timeout">timeout</a>
+                                        <code>- <span property="yui:type">Number</span></code>
+                                    </h4>
+                                    <div class="detail">
+                                        <div class="description" property="yui:description">
+                                            Milliseconds of user inactivity until user becomes inactive.
+                                        </div>
+                                    </div>
+ 
+     
+                                    <div class="default">
+                                        Default Value: 30000
+                                    </div>        
+
+                                    <hr />
+                                    </div>        
+
+                            </div>
+                        </div>
+
+                    </div>
+
+			</div>
+		</div>
+		<div class="yui-b">
+            <div class="nav">
+
+                    <div id="moduleList" class="module">
+                        <h4>Modules</h4>
+                        <ul class="content">
+                                <li class="selected"><a href="module_inactivity-timer.html" title="inactivity-timer">inactivity-timer</a></li>
+                        </ul>
+                    </div>
+
+                    <div id="classList" class="module">
+                        <h4>Classes</h4>
+                        <ul class="content">
+                                <li class="selected"><a href="InactivityTimer.html" title="InactivityTimer">InactivityTimer</a></li>
+                        </ul>
+                    </div>
+
+                    <div id="fileList" class="module">
+                        <h4>Files</h4>
+                        <ul class="content">        
+                                <li class=""><a href="inactive-timer.js.html" title="inactive-timer.js">inactive-timer.js</a></li>
+                        </ul>
+                    </div>
+
+                    <div id="propertyList" class="module">
+                        <h4>Properties</h4>
+                        <ul class="content">        
+                                <li class=""><a href="#property_options" title="options">options</a></li>
+                                <li class="private"><a href="#property_state" title="state">state</a></li>
+                                <li class="private"><a href="#property_stateChangeTime" title="stateChangeTime">stateChangeTime</a></li>
+                                <li class="private"><a href="#property_timeout" title="timeout">timeout</a></li>
+                        </ul>
+                    </div>
+
+                    <div id="methodsList" class="module">
+                        <h4>Methods</h4>
+                        <ul class="content">        
+                                <li class="private"><a href="#method_addEventBindings" title="addEventBindings">addEventBindings</a></li>
+                                <li class="private"><a href="#method_addStateObservers" title="addStateObservers">addStateObservers</a></li>
+                                <li class=""><a href="#method_getState" title="getState">getState</a></li>
+                                <li class="private"><a href="#method_inactiveUser" title="inactiveUser">inactiveUser</a></li>
+                                <li class="private"><a href="#method_initialize" title="initialize">initialize</a></li>
+                                <li class=""><a href="#method_reset" title="reset">reset</a></li>
+                                <li class="private"><a href="#method_resetTimeout" title="resetTimeout">resetTimeout</a></li>
+                                <li class=""><a href="#method_start" title="start">start</a></li>
+                                <li class=""><a href="#method_stop" title="stop">stop</a></li>
+                                <li class=""><a href="#method_timeSinceStatusChange" title="timeSinceStatusChange">timeSinceStatusChange</a></li>
+                        </ul>
+                    </div>
+
+                    <div id="eventsList" class="module">
+                        <h4>Events</h4>
+                        <ul class="content">        
+                                <li class=""><a href="#event_onActive" title="onActive">onActive</a></li>
+                                <li class=""><a href="#event_onInactive" title="onInactive">onInactive</a></li>
+                        </ul>
+                    </div>
+
+                    <div id="configList" class="module">
+                        <h4>Configuration Attributes</h4>
+                        <ul class="content">        
+                                <li class=""><a href="#config_element" title="element">element</a></li>
+                                <li class=""><a href="#config_events" title="events">events</a></li>
+                                <li class=""><a href="#config_eventTimeoutLength" title="eventTimeoutLength">eventTimeoutLength</a></li>
+                                <li class=""><a href="#config_timeout" title="timeout">timeout</a></li>
+                        </ul>
+                    </div>
+
+            </div>
+		</div>
+	</div>
+	<div id="ft">
+        <hr />
+        Copyright &copy; 2011 Yahoo! Inc. All rights reserved.
+	</div>
+</div>
+<script type="text/javascript">
+
+    var ALL_YUI_PROPS = [{"url": "InactivityTimer.html#method_addEventBindings", "access": "private", "host": "InactivityTimer", "type": "method", "name": "addEventBindings"}, {"url": "InactivityTimer.html#method_addStateObservers", "access": "private", "host": "InactivityTimer", "type": "method", "name": "addStateObservers"}, {"url": "InactivityTimer.html#config_element", "access": "", "host": "InactivityTimer", "type": "config", "name": "element"}, {"url": "InactivityTimer.html#config_events", "access": "", "host": "InactivityTimer", "type": "config", "name": "events"}, {"url": "InactivityTimer.html#config_eventTimeoutLength", "access": "", "host": "InactivityTimer", "type": "config", "name": "eventTimeoutLength"}, {"url": "InactivityTimer.html#method_getState", "access": "", "host": "InactivityTimer", "type": "method", "name": "getState"}, {"url": "InactivityTimer.html#method_inactiveUser", "access": "private", "host": "InactivityTimer", "type": "method", "name": "inactiveUser"}, {"url": "InactivityTimer.html#method_initialize", "access": "private", "host": "InactivityTimer", "type": "method", "name": "initialize"}, {"url": "InactivityTimer.html#event_onActive", "access": "", "host": "InactivityTimer", "type": "event", "name": "onActive"}, {"url": "InactivityTimer.html#event_onInactive", "access": "", "host": "InactivityTimer", "type": "event", "name": "onInactive"}, {"url": "InactivityTimer.html#property_options", "access": "", "host": "InactivityTimer", "type": "property", "name": "options"}, {"url": "InactivityTimer.html#method_reset", "access": "", "host": "InactivityTimer", "type": "method", "name": "reset"}, {"url": "InactivityTimer.html#method_resetTimeout", "access": "private", "host": "InactivityTimer", "type": "method", "name": "resetTimeout"}, {"url": "InactivityTimer.html#method_start", "access": "", "host": "InactivityTimer", "type": "method", "name": "start"}, {"url": "InactivityTimer.html#property_state", "access": "private", "host": "InactivityTimer", "type": "property", "name": "state"}, {"url": "InactivityTimer.html#property_stateChangeTime", "access": "private", "host": "InactivityTimer", "type": "property", "name": "stateChangeTime"}, {"url": "InactivityTimer.html#method_stop", "access": "", "host": "InactivityTimer", "type": "method", "name": "stop"}, {"url": "InactivityTimer.html#property_timeout", "access": "private", "host": "InactivityTimer", "type": "property", "name": "timeout"}, {"url": "InactivityTimer.html#config_timeout", "access": "", "host": "InactivityTimer", "type": "config", "name": "timeout"}, {"url": "InactivityTimer.html#method_timeSinceStatusChange", "access": "", "host": "InactivityTimer", "type": "method", "name": "timeSinceStatusChange"}];
+</script>
+</body>
+</html>
