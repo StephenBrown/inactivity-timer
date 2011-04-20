@@ -12,10 +12,12 @@ Usage
 -----
 
 Create a new timer with defaults:
+
     timer = new InactivityTimer();
         timer.start();
 
 Create a timer for 60 seconds and an accuracy of 5 seconds:
+
     timer = new InactivityTimer({
         timeout: 60000,
         eventTimeoutLength: 5000
